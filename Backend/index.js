@@ -19,7 +19,7 @@ const uri = process.env.MONGO_URL;
 const app = express();
 
 app.use(cors({
- origin: ["http://localhost:3000", "http://localhost:3001"],
+ origin: ["https://tradenova-frontend-mn69.onrender.com", "https://tradenova-agcz.onrender.com"],
   credentials: true,
 }));
 // {
