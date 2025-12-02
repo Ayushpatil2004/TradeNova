@@ -7,7 +7,7 @@ function Navbar() {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3002/", {}, { withCredentials: true })
+      .post(process.env.REACT_APP_API_URL +"/", {}, { withCredentials: true })
       .then((res) => {
         if (res.data.status) {
           setLoggedUser(true);
@@ -20,11 +20,11 @@ function Navbar() {
 
   // Logout function
   const handleLogout = async () => {
-    await axios.get("http://localhost:3002/logout", {
+    await axios.get(process.env.REACT_APP_API_URL +"/logout", {
       withCredentials: true,
     });
     setLoggedUser(false);
-    window.location.href = "/";
+    window.location.href = process.env.REACT_APP_API_URL +"/";
   };
 
   return (
