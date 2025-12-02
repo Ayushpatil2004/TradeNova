@@ -6,7 +6,7 @@ function Education() {
       <div className="row">
         <div className="col-6">
              {/* eslint-disable-next-line */}
-            <img src="media/images/education.svg" style={{width : "70%"}}/>
+            <img src="/media/images/education.svg" style={{width : "70%"}}/>
         </div>
         <div className="col-6 mb-3" style={{marginLeft : "38px", width : "622px"}}>
           <h1 className="mb-5 fs-2">

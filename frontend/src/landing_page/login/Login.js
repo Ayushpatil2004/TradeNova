@@ -65,7 +65,7 @@ function Login() {
         <div className="card-body">
           <div className="mt-3">
             <img
-              src="media/images/Tradenovacrop.png"
+              src="/media/images/Tradenovacrop.png"
               alt="Tradenova Logo"
               style={{ width: "20%" }}
             />

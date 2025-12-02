@@ -7,7 +7,7 @@ function Hero() {
       <div className="row text-center">
         {/* eslint-disable-next-line */}
         <img
-          src="/Media/images/homeHero.png"
+          src="/media/images/homeHero.png"
           alt="Hero Image"
           style={{
             height: "525px",

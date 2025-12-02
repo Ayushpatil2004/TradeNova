@@ -13,7 +13,7 @@ function Hero() {
       </div>
       <div className="row p-5">
         <div className="col-4 text-center p-3">
-          <img style={{ width: "70%" }} src="media/images/pricing-eq(0).svg" />
+          <img style={{ width: "70%" }} src="/media/images/pricing-eq(0).svg" />
           <h1 className="fs-2">Free equity delivery</h1>
           <p className="px-5 py-2">
             All equity delivery investments (NSE, BSE), are absolutely free — ₹
@@ -23,7 +23,7 @@ function Hero() {
         <div className="col-4 text-center p-3">
           <img
             style={{ width: "70%" }}
-            src="media/images/other-trades(20).svg"
+            src="/media/images/other-trades(20).svg"
           />
           <h1 className="fs-2">Intraday and F&O trades</h1>
           <p className="px-5 py-2">
@@ -33,7 +33,7 @@ function Hero() {
           </p>
         </div>
         <div className="col-4 text-center p-3">
-          <img style={{ width: "70%" }} src="media/images/pricing-eq(0).svg" />
+          <img style={{ width: "70%" }} src="/media/images/pricing-eq(0).svg" />
           <h1 className="fs-2">Free direct MF</h1>
           <p className="px-5 py-2">
             All direct mutual fund investments are absolutely free — ₹ 0

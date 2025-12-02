@@ -12,7 +12,7 @@ function Team(){
         >
           <div className="col-6 p-5 text-center" style={{marginTop : "-10px"}}>
             <img
-              src="media/images/Ayush.png"
+              src="/media/images/Ayush.png"
               style={{ borderRadius: "100%", width: "50%", marginTop : "-26px"}}
             />
             <h4 className="mt-5">Ayush Patil</h4>

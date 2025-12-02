@@ -6,7 +6,7 @@ function Awards() {
             <div className='row'>
                 <div className='col-6 p-5'>
                     {/* eslint-disable-next-line */}
-                    <img src='media/images/largestBroker.svg'/>
+                    <img src='/media/images/largestBroker.svg'/>
                 </div>
                 <div className='col-6 p-3 mt-5'>
                     <h1 className='mb-3'>Largest stock broker in India</h1>
@@ -52,7 +52,7 @@ function Awards() {
                         </div>
                     </div>
                     {/* eslint-disable-next-line */}
-                    <img src='media/images/pressLogos.png' style={{width : "90%", marginLeft : "10px"}}/>
+                    <img src='/media/images/pressLogos.png' style={{width : "90%", marginLeft : "10px"}}/>
                 </div>
             </div>
         </div>

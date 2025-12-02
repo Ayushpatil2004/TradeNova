@@ -31,7 +31,7 @@ function Stats() {
         </div>
         <div className="col-6 p-5">
           {/* eslint-disable-next-line */}
-          <img src="media/images/ecosystem.png" style={{ width: "100%" }} alt="Ecosystem"/>
+          <img src="/media/images/ecosystem.png" style={{ width: "100%" }} alt="Ecosystem"/>
           <div className="text-center">
             {/* eslint-disable-next-line */}
             <a href="" className="mx-5" style={{textDecoration : "none", color : "#16DB65"}}>

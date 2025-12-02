@@ -8,7 +8,7 @@ function Footer() {
           <div className="col" style={{marginRight : "30px"}}>
             {/* eslint-disable-next-line */}
             <img
-              src="media/images/Tradenova.png"
+              src="/media/images/Tradenova.png"
               style={{ width: "auto", maxHeight: "50px", marginLeft: "93px"}}
             />
             <p style={{ marginLeft: "116px", width: "280px", color : "#666", marginTop : "7px"}}>

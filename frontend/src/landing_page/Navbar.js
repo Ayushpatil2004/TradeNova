@@ -36,7 +36,7 @@ function Navbar() {
         <div className="container" style={{ marginRight: "160px" }}>
           <Link className="navbar-brand" to="/">
             <img
-              src="media/images/Tradenova.png"
+              src="/media/images/Tradenova.png"
               alt="Logo"
               style={{ width: "230%", marginLeft: "70px" }}
             />
