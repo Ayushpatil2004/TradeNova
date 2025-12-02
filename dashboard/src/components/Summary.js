@@ -6,11 +6,7 @@ const Summary = () => {
 
   useEffect(() => {
     axios
-      .post(
-        process.env.REACT_APP_API_URL +"/",
-        {},
-        { withCredentials: true }
-      )
+      .post(process.env.REACT_APP_API_URL + "/", {}, { withCredentials: true })
       .then((res) => {
         if (res.data.status) {
           setUsername(res.data.user); // dynamic username
