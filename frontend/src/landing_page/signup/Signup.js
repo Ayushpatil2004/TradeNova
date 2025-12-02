@@ -43,7 +43,7 @@ function Signup() {
       };
 
       const { data } = await axios.post(
-        process.env.REACT_APP_API_URL +"/signup",
+        window.location.href = process.env.REACT_APP_DASHBOARD_URL + "/",
         payload,
         { withCredentials: true }
       );

@@ -21,17 +21,15 @@ function Login() {
     });
   };
 
-  const handleError = (err) =>
-    toast.error(err, { position: "top-right" });
+  const handleError = (err) => toast.error(err, { position: "top-right" });
 
-  const handleSuccess = (msg) =>
-    toast.success(msg, { position: "top-right" });
+  const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        process.env.REACT_APP_API_URL +"/login",
+        process.env.REACT_APP_API_URL + "/login",
         {
           username,
           password,
@@ -41,7 +39,9 @@ function Login() {
 
       if (data.success) {
         handleSuccess(data.message);
-        setTimeout(() => navigate(process.env.REACT_APP_DASHBOARD_URL+"/"), 700);
+        setTimeout(() => {
+          window.location.href = process.env.REACT_APP_DASHBOARD_URL + "/";
+        }, 700);
       } else {
         handleError(data.message);
       }
