@@ -50,7 +50,7 @@ function Signup() {
 
       if (data.success) {
         handleSuccess("Signup successful!");
-        setTimeout(() => navigate(process.env.REACT_DASHBOARD_URL+"/"), 700); // Auto-login → redirect home
+        setTimeout(() => navigate(process.env.REACT_APP_DASHBOARD_URL+"/"), 700); // Auto-login → redirect home
       } else {
         handleError(data.message);
       }
