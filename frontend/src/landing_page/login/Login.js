@@ -41,7 +41,7 @@ function Login() {
 
       if (data.success) {
         handleSuccess(data.message);
-        setTimeout(() => navigate("http://localhost:3001/"), 700);
+        setTimeout(() => navigate(process.env.REACT_DASHBOARD_URL+"/"), 700);
       } else {
         handleError(data.message);
       }

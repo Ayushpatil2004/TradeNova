@@ -123,7 +123,7 @@ function Navbar() {
                   <li className="nav-item">
                     <a
                       className="nav-link active text-muted"
-                      href="http://localhost:3001/"
+                      href="https://tradenova-agcz.onrender.com/"
                       style={{ textDecoration: "none", color: "inherit", marginLeft: "29px" }}
                     >
                       <p className="menu">Dashboard</p>
