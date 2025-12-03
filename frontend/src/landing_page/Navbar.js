@@ -2,30 +2,37 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-
 function Navbar() {
   const [loggedUser, setLoggedUser] = useState(false);
 
-  useEffect(() => {
+  const checkLogin = () => {
     axios
-      .post(process.env.REACT_APP_API_URL +"/", {}, { withCredentials: true })
+      .post(process.env.REACT_APP_API_URL + "/", {}, { withCredentials: true })
       .then((res) => {
-        if (res.data.status) {
-          setLoggedUser(true);
-        } else {
-          setLoggedUser(false);
-        }
+        setLoggedUser(res.data.status);
       })
       .catch(() => setLoggedUser(false));
+  };
+
+  useEffect(() => {
+    checkLogin();
+
+    // refresh navbar when window comes back into focus
+    window.addEventListener("focus", checkLogin);
+
+    return () => window.removeEventListener("focus", checkLogin);
   }, []);
 
   // Logout function
   const handleLogout = async () => {
-    await axios.get(process.env.REACT_APP_API_URL +"/logout", {
+    await axios.get(process.env.REACT_APP_API_URL + "/logout", {
       withCredentials: true,
     });
+
     setLoggedUser(false);
-    window.location.href = process.env.REACT_APP_API_URL +"/";
+
+    // redirect to frontend home, NOT backend
+    window.location.assign("https://tradenova-frontend-mn69.onrender.com/");
   };
 
   return (
@@ -122,13 +129,17 @@ function Navbar() {
                 )}
                 {loggedUser && (
                   <li className="nav-item">
-                    <a
+                    <span
                       className="nav-link active text-muted"
-                      href="https://tradenova-agcz.onrender.com/"
-                      style={{ textDecoration: "none", color: "inherit", marginLeft: "29px" }}
+                      style={{ cursor: "pointer", marginLeft: "29px" }}
+                      onClick={() =>
+                        window.location.assign(
+                          "https://tradenova-agcz.onrender.com/"
+                        )
+                      }
                     >
-                      <p className="menu">Dashboard</p>
-                    </a>
+                      Dashboard
+                    </span>
                   </li>
                 )}
               </ul>

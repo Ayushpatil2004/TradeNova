@@ -24,11 +24,9 @@ function Signup() {
     });
   };
 
-  const handleError = (err) =>
-    toast.error(err, { position: "top-right" });
+  const handleError = (err) => toast.error(err, { position: "top-right" });
 
-  const handleSuccess = (msg) =>
-    toast.success(msg, { position: "top-right" });
+  const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,14 +41,16 @@ function Signup() {
       };
 
       const { data } = await axios.post(
-        window.location.href = process.env.REACT_APP_API_URL + "/signup",
+        process.env.REACT_APP_API_URL + "/signup",
         payload,
         { withCredentials: true }
       );
 
       if (data.success) {
         handleSuccess("Signup successful!");
-        setTimeout(() => navigate(process.env.REACT_APP_DASHBOARD_URL+"/"), 700); // Auto-login → redirect home
+        setTimeout(() => {
+          window.location.assign(process.env.REACT_APP_DASHBOARD_URL + "/");
+        }, 1200); // Auto-login → redirect home
       } else {
         handleError(data.message);
       }
