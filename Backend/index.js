@@ -21,14 +21,19 @@ const app = express();
 app.use(cors({
  origin: ["https://tradenova-frontend-mn69.onrender.com", "https://tradenova-agcz.onrender.com"],
   credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
 }));
 // {
 //     origin: ["http://localhost:3002"],
 //     methods: ["GET", "POST", "PUT", "DELETE"],
 //     credentials: true,
 //   }
-
+app.use(cookieParser());
+app.use(express.json());
 app.use(bodyParser.json());
+
+app.use("/", authRoute);
 
 // app.get("/addHoldings",async(req,res)=>{
 //     let tempHoldings = [
@@ -232,8 +237,3 @@ app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
 
-app.use(cookieParser());
-
-app.use(express.json());
-
-app.use("/", authRoute);
