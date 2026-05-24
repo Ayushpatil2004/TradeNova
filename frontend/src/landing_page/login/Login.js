@@ -57,10 +57,10 @@ function Login() {
   };
 
   return (
-    <div className="container" style={{ marginBottom: "40px" }}>
+    <div className="container px-3" style={{ marginBottom: "40px" }}>
       <div
-        className="card text-center"
-        style={{ width: "30%", margin: "50px auto auto" }}
+        className="card text-center shadow-sm"
+        style={{ width: "100%", maxWidth: "420px", margin: "50px auto auto" }}
       >
         <div className="card-body">
           <div className="mt-3">
@@ -103,7 +103,8 @@ function Login() {
                 type="submit"
                 className="btn mb-3 mt-3 signup-btn"
                 style={{
-                  width: "30%",
+                  width: "100%",
+                  maxWidth: "150px",
                   backgroundColor: " #16DB65",
                   color: "#020202",
                   fontSize: "18px",

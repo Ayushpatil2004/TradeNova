@@ -41,12 +41,12 @@ function Navbar() {
         className="navbar navbar-expand-lg border-bottom p-2 sticky-top"
         style={{ backgroundColor: "#fff" }}
       >
-        <div className="container" style={{ marginRight: "160px" }}>
+        <div className="container">
           <Link className="navbar-brand" to="/">
             <img
               src="/media/images/Tradenova.png"
               alt="Logo"
-              style={{ width: "230%", marginLeft: "70px" }}
+              style={{ height: "45px", width: "auto" }}
             />
           </Link>
 
@@ -62,88 +62,80 @@ function Navbar() {
           <div
             className="collapse navbar-collapse"
             id="navbarSupportedContent"
-            style={{ marginLeft: "529px" }}
           >
-            <form
-              className="d-flex"
-              role="search"
-              style={{ marginLeft: "86px" }}
-            >
-              <ul className="navbar-nav mb-lg-0" style={{ fontSize: "1rem" }}>
-                {/* Sign Up — always visible */}
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0" style={{ fontSize: "1rem" }}>
+              {/* Sign Up — always visible */}
+              <li className="nav-item">
+                <Link
+                  className="nav-link active text-muted"
+                  aria-current="page"
+                  to="/signup"
+                >
+                  Sign up
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link active text-muted" to="/about">
+                  About
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link active text-muted" to="/product">
+                  Product
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link active text-muted" to="/pricing">
+                  Pricing
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link active text-muted" to="/support">
+                  Support
+                </Link>
+              </li>
+
+              {!loggedUser ? (
                 <li className="nav-item">
                   <Link
                     className="nav-link active text-muted"
                     aria-current="page"
-                    to="/signup"
-                    style={{ width: "70px" }}
+                    to="/login"
                   >
-                    Sign up
+                    Login
                   </Link>
                 </li>
-
+              ) : (
                 <li className="nav-item">
-                  <Link className="nav-link active text-muted" to="/about">
-                    About
-                  </Link>
+                  <span
+                    className="nav-link active text-muted"
+                    style={{ cursor: "pointer" }}
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </span>
                 </li>
-
+              )}
+              {loggedUser && (
                 <li className="nav-item">
-                  <Link className="nav-link active text-muted" to="/product">
-                    Product
-                  </Link>
+                  <span
+                    className="nav-link active text-muted"
+                    style={{ cursor: "pointer" }}
+                    onClick={() =>
+                      window.location.assign(
+                        "https://tradenova-agcz.onrender.com/"
+                      )
+                    }
+                  >
+                    Dashboard
+                  </span>
                 </li>
-
-                <li className="nav-item">
-                  <Link className="nav-link active text-muted" to="/pricing">
-                    Pricing
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link className="nav-link active text-muted" to="/support">
-                    Support
-                  </Link>
-                </li>
-
-                {!loggedUser ? (
-                  <li className="nav-item">
-                    <Link
-                      className="nav-link active text-muted"
-                      aria-current="page"
-                      to="/login"
-                    >
-                      Login
-                    </Link>
-                  </li>
-                ) : (
-                  <li className="nav-item">
-                    <span
-                      className="nav-link active text-muted"
-                      style={{ cursor: "pointer" }}
-                      onClick={handleLogout}
-                    >
-                      Logout
-                    </span>
-                  </li>
-                )}
-                {loggedUser && (
-                  <li className="nav-item">
-                    <span
-                      className="nav-link active text-muted"
-                      style={{ cursor: "pointer", marginLeft: "29px" }}
-                      onClick={() =>
-                        window.location.assign(
-                          "https://tradenova-agcz.onrender.com/"
-                        )
-                      }
-                    >
-                      Dashboard
-                    </span>
-                  </li>
-                )}
-              </ul>
-            </form>
+              )}
+            </ul>
           </div>
         </div>
       </nav>

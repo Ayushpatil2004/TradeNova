@@ -5,17 +5,18 @@ function Footer() {
     <footer style={{ backgroundColor: "#fbfbfb", borderTop: "1px solid #eee" }}>
       <div className="container mt-5">
         <div className="row mt-5">
-          <div className="col" style={{marginRight : "30px"}}>
+          <div className="col-12 col-md-3 mb-4 mb-md-0 text-md-start text-center">
             {/* eslint-disable-next-line */}
             <img
               src="/media/images/Tradenova.png"
-              style={{ width: "auto", maxHeight: "50px", marginLeft: "93px"}}
+              style={{ width: "auto", maxHeight: "50px" }}
+              alt="Logo"
             />
-            <p style={{ marginLeft: "116px", width: "280px", color : "#666", marginTop : "7px"}}>
+            <p style={{ color : "#666", marginTop : "7px"}}>
               &copy; 2010 - 2025, TradeNova Broking Ltd. All rights reserved.
             </p>
           </div>
-          <div className="col">
+          <div className="col-12 col-md-3 mb-4 mb-md-0 text-md-start text-center">
             <p style={{fontSize : "1.125rem", fontWeight : "500", marginBottom : "10px"}}>Company</p>
             {/* eslint-disable-next-line */}
             <a href="" style={{fontWeight : "500", color : "#666", lineHeight : "2", textDecoration : "none"}}>About</a>
@@ -37,7 +38,7 @@ function Footer() {
             <a href="" style={{fontWeight : "500", color : "#666", lineHeight : "2", textDecoration : "none"}}>TradeNova Cares (CSR)</a>
             <br />
           </div>
-          <div className="col">
+          <div className="col-12 col-md-3 mb-4 mb-md-0 text-md-start text-center">
             <p style={{fontSize : "1.125rem", fontWeight : "500", marginBottom : "10px"}}>Support</p>
             <a href="" style={{fontWeight : "500", color : "#666", lineHeight : "2", textDecoration : "none"}}>Contact us</a>
             <br />
@@ -58,7 +59,7 @@ function Footer() {
             <a href="" style={{fontWeight : "500", color : "#666", lineHeight : "2", textDecoration : "none"}}>Status of your complaints</a>
             <br />
           </div>
-          <div className="col">
+          <div className="col-12 col-md-3 mb-4 mb-md-0 text-md-start text-center">
             <p style={{fontSize : "1.125rem", fontWeight : "500", marginBottom : "10px"}}>Account</p>
             <a href="" style={{fontWeight : "500", color : "#666", lineHeight : "2", textDecoration : "none"}}>Open an account</a>
             <br />
@@ -67,11 +68,10 @@ function Footer() {
           </div>
         </div>
         <div
-          className="mt-5 text-small text-muted"
+          className="mt-5 text-small text-muted text-center text-md-start"
           style={{
             fontSize: "0.75rem",
-            marginBottom: "10px",
-            marginLeft: "116px",
+            marginBottom: "10px"
           }}
         >
           <p>
@@ -131,16 +131,16 @@ function Footer() {
             claiming to be part of TradeNova and offering such services, please
             <a href="" style={{ textDecoration: "none" , color : "#16DB65"}}> create a ticket here.</a>
           </p>
-        <div style={{marginLeft : "101px"}}>
-        <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>NSE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>BSE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>MCX</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>Terms & conditions</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>Policies & procedures </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>Privacy policy </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>Disclosure </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>For investor's attention</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>Investor charter</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div className="d-flex flex-wrap justify-content-center justify-content-md-start gap-3 mt-4">
+          <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>NSE</a>
+          <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>BSE</a>
+          <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>MCX</a>
+          <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>Terms & conditions</a>
+          <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>Policies & procedures </a>
+          <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>Privacy policy </a>
+          <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>Disclosure </a>
+          <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>For investor's attention</a>
+          <a href=""  style={{textDecoration : "none",color : "#9b9b9b", fontSize : "0.75rem", fontWeight : "500"}}>Investor charter</a>
         </div>
         </div>
       </div>

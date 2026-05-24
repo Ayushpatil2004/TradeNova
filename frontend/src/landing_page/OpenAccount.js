@@ -26,7 +26,7 @@ function OpenAccount() {
         >
         <button
          class="btn mb-5 signup-btn"
-         style={{width: "16%", margin: "0px auto", backgroundColor: " #16DB65", color: "#020202", fontSize: "18px"}}
+         style={{width: "100%", maxWidth: "240px", margin: "0px auto", backgroundColor: " #16DB65", color: "#020202", fontSize: "18px"}}
         >
           Sign up for free
         </button>

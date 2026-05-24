@@ -2,12 +2,12 @@ import React from "react";
 
 function CreateTicket() {
   return(
-  <div className="container">
-    <div className="row mt-5" style={{marginLeft:"140px"}}>
-      <h2 style={{color:"#666666",fontWeight:"400",fontSize:"22px"}} className="mb-5 text-muted">
+  <div className="container py-3">
+    <div className="row mt-5">
+      <h2 style={{color:"#666666",fontWeight:"400",fontSize:"22px"}} className="mb-5 text-muted text-center text-md-start">
         To create a ticket, select a relevant topic
       </h2>
-    <div className="col-4 p-2" style={{marginBottom : "40px"}}>
+    <div className="col-12 col-md-4 p-2" style={{marginBottom : "40px"}}>
       <h4 className="mb-4" style={{fontSize : "18px"}}>
       <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;&nbsp;Account Opening
       </h4>
@@ -22,7 +22,7 @@ function CreateTicket() {
                         </ul>
                     </div>
     </div>
-    <div className="col-4 p-2" style={{marginBottom : "40px"}}>
+    <div className="col-12 col-md-4 p-2" style={{marginBottom : "40px"}}>
       <h4 style={{marginBottom : "20px", fontSize : "18px"}}>
       <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Your TradeNova Account
       </h4>
@@ -37,7 +37,7 @@ function CreateTicket() {
                         </ul>
                     </div>
     </div>
-    <div className="col-4 p-2" style={{marginBottom : "40px"}}>
+    <div className="col-12 col-md-4 p-2" style={{marginBottom : "40px"}}>
       <h4 style={{ marginBottom : "20px", fontSize : "18px"}}>
       <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;&nbsp;Trading and Markets
       </h4>
@@ -52,7 +52,7 @@ function CreateTicket() {
                         </ul>
                     </div>
     </div>
-    <div className="col-4 p-2" style={{marginBottom : "100px"}}>
+    <div className="col-12 col-md-4 p-2" style={{marginBottom : "40px"}}>
       <h4 style={{marginBottom : "20px", fontSize : "18px"}}>
       <i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Funds
       </h4>
@@ -65,7 +65,7 @@ function CreateTicket() {
                         </ul>
                     </div>
     </div>
-    <div className="col-4 p-2" style={{marginBottom : "100px"}}>
+    <div className="col-12 col-md-4 p-2" style={{marginBottom : "40px"}}>
       <h4 style={{ marginBottom : "20px", fontSize : "18px"}}>
       <i class="fa fa-life-ring" aria-hidden="true"></i>&nbsp;&nbsp;Console
       </h4>
@@ -80,7 +80,7 @@ function CreateTicket() {
                         </ul>
                     </div>
     </div>
-    <div className="col-4 p-2" style={{marginBottom : "100px"}}>
+    <div className="col-12 col-md-4 p-2" style={{marginBottom : "40px"}}>
       <h4 style={{ marginBottom : "20px", fontSize : "18px"}}>
       <i class="fa fa-circle" aria-hidden="true"></i>&nbsp;&nbsp;Coin
       </h4>

@@ -337,7 +337,7 @@ function Brokerage() {
           Charges explained
         </h4>
         <div class="row">
-          <div class="col-6 p-4">
+          <div class="col-12 col-md-6 p-4">
             <h6 class="py-2 mr-5" style={{ fontSize: "16px" }}>
               Securities/Commodities transaction tax
             </h6>
@@ -455,7 +455,7 @@ function Brokerage() {
               </ul>
             </p>
           </div>
-          <div class="col-6 p-4">
+          <div class="col-12 col-md-6 p-4">
             <h6 class="py-2 mr-5" style={{ fontSize: "16px" }}>
               GST
             </h6>

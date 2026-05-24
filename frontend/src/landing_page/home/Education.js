@@ -3,12 +3,12 @@ import React from "react";
 function Education() {
   return (
     <div className="container mt-5">
-      <div className="row">
-        <div className="col-6">
+      <div className="row align-items-center">
+        <div className="col-12 col-md-6 text-center mb-4 mb-md-0">
              {/* eslint-disable-next-line */}
-            <img src="/media/images/education.svg" style={{width : "70%"}}/>
+            <img src="/media/images/education.svg" className="img-fluid" style={{maxWidth : "80%"}} alt="Education"/>
         </div>
-        <div className="col-6 mb-3" style={{marginLeft : "38px", width : "622px"}}>
+        <div className="col-12 col-md-6 mb-3">
           <h1 className="mb-5 fs-2">
             Free and open market education
           </h1>

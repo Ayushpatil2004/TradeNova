@@ -9,11 +9,9 @@ function Hero() {
         <img
           src="/media/images/homeHero.png"
           alt="Hero Image"
+          className="img-fluid"
           style={{
-            height: "525px",
-            width: "1266px",
-            marginLeft: "30px",
-            maxWidth: "4000px",
+            maxHeight: "525px",
             marginTop: "55px",
             marginBottom: "30px",
           }}
@@ -42,7 +40,8 @@ function Hero() {
           <button
             class="btn mb-5 signup-btn"
             style={{
-              width: "16%",
+              width: "100%",
+              maxWidth: "240px",
               margin: "0px auto",
               backgroundColor: "#16DB65",
               color: "#020202",

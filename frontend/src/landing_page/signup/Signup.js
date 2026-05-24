@@ -61,8 +61,8 @@ function Signup() {
   };
 
   return (
-    <div className="container" style={{ marginTop: "40px" }}>
-      <div className="card" style={{ width: "40%", margin: "auto" }}>
+    <div className="container px-3" style={{ marginTop: "40px", marginBottom: "40px" }}>
+      <div className="card shadow-sm" style={{ width: "100%", maxWidth: "500px", margin: "auto" }}>
         <div className="card-body">
           <h3 className="text-center mb-4">Create Your Account</h3>
 
