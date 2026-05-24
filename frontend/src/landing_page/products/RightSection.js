@@ -2,7 +2,6 @@ import React from "react";
 
 function RightSection({imageURL, productName, productDescription, learnMore}) {
   return (
-  return (
     <div className="container mt-5 py-3">
       <div className="row d-flex justify-content-center align-items-center">
         <div className="d-none d-md-block col-md-1"></div>

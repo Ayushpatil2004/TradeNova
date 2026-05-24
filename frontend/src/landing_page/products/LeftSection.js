@@ -10,7 +10,6 @@ function LeftSection({
   appStore,
 }) {
   return (
-  return (
     <div className="container mt-5 p-md-5 p-3">
       <div className="row align-items-center">
         <div className="col-12 col-md-6 text-center mb-4 mb-md-0">
