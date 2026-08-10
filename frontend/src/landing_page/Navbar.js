@@ -6,8 +6,16 @@ function Navbar() {
   const [loggedUser, setLoggedUser] = useState(false);
 
   const checkLogin = () => {
+    const token = localStorage.getItem("token");
     axios
-      .post(process.env.REACT_APP_API_URL + "/", {}, { withCredentials: true })
+      .post(
+        process.env.REACT_APP_API_URL + "/",
+        {},
+        {
+          withCredentials: true,
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        }
+      )
       .then((res) => {
         setLoggedUser(res.data.status);
       })
@@ -25,14 +33,21 @@ function Navbar() {
 
   // Logout function
   const handleLogout = async () => {
-    await axios.get(process.env.REACT_APP_API_URL + "/logout", {
-      withCredentials: true,
-    });
+    const token = localStorage.getItem("token");
+    try {
+      await axios.get(process.env.REACT_APP_API_URL + "/logout", {
+        withCredentials: true,
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+    } catch (e) {
+      console.log(e);
+    }
 
+    localStorage.removeItem("token");
     setLoggedUser(false);
 
     // redirect to frontend home, NOT backend
-    window.location.assign("https://tradenova-frontend-mn69.onrender.com/");
+    window.location.assign(window.location.origin + "/");
   };
 
   return (

@@ -5,8 +5,16 @@ const Summary = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     axios
-      .post(process.env.REACT_APP_API_URL + "/", {}, { withCredentials: true })
+      .post(
+        process.env.REACT_APP_API_URL + "/",
+        {},
+        {
+          withCredentials: true,
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        }
+      )
       .then((res) => {
         if (res.data.status) {
           setUsername(res.data.user); // dynamic username

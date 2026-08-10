@@ -18,17 +18,32 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-app.use(cors({
- origin: ["https://tradenova-frontend-mn69.onrender.com", "https://tradenova-agcz.onrender.com"],
-  credentials: true,
+const allowedOrigins = [
+  "https://tradenova-frontend-mn69.onrender.com",
+  "https://tradenova-agcz.onrender.com",
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "http://localhost:3002",
+  "http://localhost:5173",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (
+        allowedOrigins.includes(origin) ||
+        origin.endsWith(".onrender.com")
+      ) {
+        return callback(null, origin);
+      }
+      return callback(null, origin);
+    },
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-}));
-// {
-//     origin: ["http://localhost:3002"],
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true,
-//   }
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());

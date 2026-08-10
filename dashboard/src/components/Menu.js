@@ -18,8 +18,25 @@ const Menu = () => {
   };
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenFromUrl = urlParams.get("token");
+    if (tokenFromUrl) {
+      localStorage.setItem("token", tokenFromUrl);
+      const cleanUrl = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+
+    const token = tokenFromUrl || localStorage.getItem("token");
+
     axios
-      .post(process.env.REACT_APP_API_URL + "/", {}, { withCredentials: true })
+      .post(
+        process.env.REACT_APP_API_URL + "/",
+        {},
+        {
+          withCredentials: true,
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        }
+      )
       .then((res) => {
         if (res.data.status) {
           // Username
@@ -27,13 +44,13 @@ const Menu = () => {
 
           // Fullname → initials
           const fullname = res.data.fullname || "";
-          const parts = fullname.split(" ");
+          const parts = fullname.trim().split(/\s+/);
 
           if (parts.length >= 2) {
             const first = parts[0][0];
             const last = parts[1][0];
             setInitials((first + last).toUpperCase());
-          } else {
+          } else if (parts.length === 1 && parts[0]) {
             // If only one name
             setInitials(parts[0][0].toUpperCase());
           }

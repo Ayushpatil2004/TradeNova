@@ -47,12 +47,17 @@ function Signup() {
       );
 
       if (data.success) {
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+        }
         handleSuccess("Signup successful!");
         setTimeout(() => {
-          window.location.assign(process.env.REACT_APP_DASHBOARD_URL + "/");
+          const dashboardBaseUrl = process.env.REACT_APP_DASHBOARD_URL || "https://tradenova-agcz.onrender.com";
+          const redirectUrl = data.token ? `${dashboardBaseUrl}/?token=${data.token}` : `${dashboardBaseUrl}/`;
+          window.location.assign(redirectUrl);
         }, 1200); // Auto-login → redirect home
       } else {
-        handleError(data.message);
+        handleError(data.message || "Signup failed");
       }
     } catch (err) {
       handleError("Something went wrong");

@@ -38,12 +38,17 @@ function Login() {
       );
 
       if (data.success) {
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+        }
         handleSuccess(data.message);
         setTimeout(() => {
-          window.location.href = process.env.REACT_APP_DASHBOARD_URL + "/";
+          const dashboardBaseUrl = process.env.REACT_APP_DASHBOARD_URL || "https://tradenova-agcz.onrender.com";
+          const redirectUrl = data.token ? `${dashboardBaseUrl}/?token=${data.token}` : `${dashboardBaseUrl}/`;
+          window.location.href = redirectUrl;
         }, 700);
       } else {
-        handleError(data.message);
+        handleError(data.message || "Login failed");
       }
     } catch (err) {
       handleError("Something went wrong");
