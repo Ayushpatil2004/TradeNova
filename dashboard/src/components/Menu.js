@@ -193,7 +193,7 @@ const Menu = () => {
               <p style={{ margin: "0 0 4px 0", fontWeight: "600", color: "#333", fontSize: "14px" }}>
                 {user || "User"}
               </p>
-              <hr style={{ margin: "6px 0", borderColor: "#eee" }} />
+              <div style={{ height: "1px", backgroundColor: "#eee", margin: "8px 0" }} />
               <button
                 onClick={handleLogout}
                 style={{
