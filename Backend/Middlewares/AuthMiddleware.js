@@ -22,7 +22,10 @@ module.exports.userVerification = (req, res) => {
     } else {
       try {
         const user = await User.findById(data.id);
-        if (user) {
+        const currentTokenVersion = user ? (user.tokenVersion || 0) : -1;
+        const payloadTokenVersion = data.tokenVersion !== undefined ? data.tokenVersion : 0;
+
+        if (user && payloadTokenVersion === currentTokenVersion) {
           return res.json({
             status: true,
             user: user.username,

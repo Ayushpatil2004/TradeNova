@@ -46,8 +46,8 @@ function Navbar() {
     localStorage.removeItem("token");
     setLoggedUser(false);
 
-    // redirect to frontend home, NOT backend
-    window.location.assign(window.location.origin + "/");
+    const dashboardUrl = process.env.REACT_APP_DASHBOARD_URL || "https://tradenova-agcz.onrender.com";
+    window.location.assign(`${dashboardUrl.replace(/\/$/, "")}/?action=logout`);
   };
 
   return (

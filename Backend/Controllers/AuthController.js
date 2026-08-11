@@ -28,7 +28,7 @@ module.exports.Signup = async (req, res, next) => {
       phone,
       createdAt,
     });
-    const token = createSecretToken(user._id);
+    const token = createSecretToken(user._id, user.tokenVersion || 0);
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
@@ -62,7 +62,7 @@ module.exports.Login = async (req, res, next) => {
     if (!auth) {
       return res.json({ message: "Incorrect password or username", success: false });
     }
-    const token = createSecretToken(user._id);
+    const token = createSecretToken(user._id, user.tokenVersion || 0);
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
@@ -79,5 +79,46 @@ module.exports.Login = async (req, res, next) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: error.message || "Internal server error", success: false });
+  }
+};
+
+module.exports.Logout = async (req, res) => {
+  try {
+    let token = req.cookies.token;
+    if (!token && req.headers.authorization) {
+      const authHeader = req.headers.authorization;
+      if (authHeader.startsWith("Bearer ")) {
+        token = authHeader.substring(7);
+      }
+    }
+
+    if (token) {
+      const secret = process.env.JWT_SECRET || "default_secret_key_tradenova";
+      try {
+        const decoded = jwt.verify(token, secret);
+        if (decoded && decoded.id) {
+          const user = await User.findById(decoded.id);
+          if (user) {
+            user.tokenVersion = (user.tokenVersion || 0) + 1;
+            await user.save();
+          }
+        }
+      } catch (err) {
+        // Ignore token verification errors during logout
+      }
+    }
+
+    res.cookie("token", "", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      expires: new Date(0),
+      path: "/",
+    });
+
+    return res.json({ success: true, message: "Logged out successfully" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ success: false, message: "Logout error" });
   }
 };

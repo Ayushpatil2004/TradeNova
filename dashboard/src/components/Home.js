@@ -11,6 +11,19 @@ const Home = () => {
   useEffect(() => {
     const checkAuth = async () => {
       const urlParams = new URLSearchParams(window.location.search);
+      const frontendUrl =
+        process.env.REACT_APP_FRONTEND_URL || "https://tradenova-frontend-mn69.onrender.com";
+      const loginRedirectUrl = `${frontendUrl.replace(/\/$/, "")}/login`;
+
+      const action = urlParams.get("action");
+      if (action === "logout") {
+        localStorage.removeItem("token");
+        const cleanUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, cleanUrl);
+        window.location.href = loginRedirectUrl;
+        return;
+      }
+
       const tokenFromUrl = urlParams.get("token");
       if (tokenFromUrl) {
         localStorage.setItem("token", tokenFromUrl);
@@ -19,9 +32,6 @@ const Home = () => {
       }
 
       const token = tokenFromUrl || localStorage.getItem("token");
-      const frontendUrl =
-        process.env.REACT_APP_FRONTEND_URL || "https://tradenova-frontend-mn69.onrender.com";
-      const loginRedirectUrl = `${frontendUrl.replace(/\/$/, "")}/login`;
 
       if (!token) {
         window.location.href = loginRedirectUrl;

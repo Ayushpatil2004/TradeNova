@@ -23,6 +23,10 @@ const UsersSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Your phone number is required"],
   },
+  tokenVersion: {
+    type: Number,
+    default: 0,
+  },
   createdAt: {
     type: Date,
     default: new Date(),
@@ -30,6 +34,7 @@ const UsersSchema = new mongoose.Schema({
 });
 
 UsersSchema.pre("save", async function () {
+  if (!this.isModified("password")) return;
   this.password = await bcrypt.hash(this.password, 12);
 });
 

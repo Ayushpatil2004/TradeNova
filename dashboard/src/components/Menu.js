@@ -64,6 +64,20 @@ const Menu = () => {
 
   const frontendUrl = process.env.REACT_APP_FRONTEND_URL || "https://tradenova-frontend-mn69.onrender.com/";
 
+  const handleLogout = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      await axios.get(process.env.REACT_APP_API_URL + "/logout", {
+        withCredentials: true,
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+    } catch (e) {
+      console.log(e);
+    }
+    localStorage.removeItem("token");
+    window.location.href = (process.env.REACT_APP_FRONTEND_URL || "https://tradenova-frontend-mn69.onrender.com").replace(/\/$/, "") + "/login";
+  };
+
   return (
     <div className="menu-container">
       <a href={frontendUrl}>
@@ -150,9 +164,50 @@ const Menu = () => {
 
         <hr />
 
-        <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">{initials || "U"}</div>
-          <p className="username">{user || "USER"}</p>
+        <div className="profile-wrapper" style={{ position: "relative" }}>
+          <div className="profile" onClick={handleProfileClick} style={{ cursor: "pointer" }}>
+            <div className="avatar">{initials || "U"}</div>
+            <p className="username">{user || "USER"}</p>
+          </div>
+
+          {isProfileDropdownOpen && (
+            <div
+              className="profile-dropdown"
+              style={{
+                position: "absolute",
+                top: "100%",
+                right: 0,
+                backgroundColor: "#fff",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                borderRadius: "6px",
+                padding: "12px 16px",
+                zIndex: 1000,
+                minWidth: "160px",
+                marginTop: "8px",
+              }}
+            >
+              <p style={{ margin: "0 0 4px 0", fontWeight: "600", color: "#333", fontSize: "14px" }}>
+                {user || "User"}
+              </p>
+              <hr style={{ margin: "6px 0", borderColor: "#eee" }} />
+              <button
+                onClick={handleLogout}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: "#df514c",
+                  cursor: "pointer",
+                  fontWeight: "500",
+                  fontSize: "14px",
+                  padding: "4px 0",
+                  width: "100%",
+                  textAlign: "left",
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
