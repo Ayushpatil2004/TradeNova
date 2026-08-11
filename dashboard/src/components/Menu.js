@@ -62,12 +62,24 @@ const Menu = () => {
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
 
+  const frontendUrl = process.env.REACT_APP_FRONTEND_URL || "https://tradenova-frontend-mn69.onrender.com/";
+
   return (
     <div className="menu-container">
-      <img src="logo.png" style={{ width: "50px" }} />
+      <a href={frontendUrl}>
+        <img src="logo.png" style={{ width: "50px", cursor: "pointer" }} alt="Logo" />
+      </a>
 
       <div className="menus">
         <ul>
+          <li>
+            <a
+              style={{ textDecoration: "none" }}
+              href={frontendUrl}
+            >
+              <p className={menuClass}>Home</p>
+            </a>
+          </li>
           <li>
             <Link
               style={{ textDecoration: "none" }}

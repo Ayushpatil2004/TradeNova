@@ -142,7 +142,7 @@ function Navbar() {
                     style={{ cursor: "pointer" }}
                     onClick={() =>
                       window.location.assign(
-                        "https://tradenova-agcz.onrender.com/"
+                        process.env.REACT_APP_DASHBOARD_URL || "https://tradenova-agcz.onrender.com/"
                       )
                     }
                   >
