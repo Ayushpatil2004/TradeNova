@@ -84,7 +84,7 @@ module.exports.Login = async (req, res, next) => {
 
 module.exports.Logout = async (req, res) => {
   try {
-    let token = req.cookies.token;
+    let token = req.cookies.token || req.query.token || (req.body && req.body.token);
     if (!token && req.headers.authorization) {
       const authHeader = req.headers.authorization;
       if (authHeader.startsWith("Bearer ")) {
@@ -93,9 +93,8 @@ module.exports.Logout = async (req, res) => {
     }
 
     if (token) {
-      const secret = process.env.JWT_SECRET || "default_secret_key_tradenova";
       try {
-        const decoded = jwt.verify(token, secret);
+        const decoded = jwt.decode(token);
         if (decoded && decoded.id) {
           const user = await User.findById(decoded.id);
           if (user) {
@@ -104,7 +103,7 @@ module.exports.Logout = async (req, res) => {
           }
         }
       } catch (err) {
-        // Ignore token verification errors during logout
+        console.log("Logout decode error:", err);
       }
     }
 

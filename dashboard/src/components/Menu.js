@@ -67,15 +67,19 @@ const Menu = () => {
   const handleLogout = async () => {
     const token = localStorage.getItem("token");
     try {
-      await axios.get(process.env.REACT_APP_API_URL + "/logout", {
-        withCredentials: true,
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
-      });
+      await axios.get(
+        process.env.REACT_APP_API_URL + "/logout" + (token ? `?token=${token}` : ""),
+        {
+          withCredentials: true,
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        }
+      );
     } catch (e) {
       console.log(e);
     }
     localStorage.removeItem("token");
-    window.location.href = (process.env.REACT_APP_FRONTEND_URL || "https://tradenova-frontend-mn69.onrender.com").replace(/\/$/, "") + "/";
+    const frontendUrlClean = (process.env.REACT_APP_FRONTEND_URL || "https://tradenova-frontend-mn69.onrender.com").replace(/\/$/, "");
+    window.location.href = `${frontendUrlClean}/?action=logout`;
   };
 
   return (

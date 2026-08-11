@@ -17,12 +17,28 @@ function Navbar() {
         }
       )
       .then((res) => {
-        setLoggedUser(res.data.status);
+        if (res.data.status) {
+          setLoggedUser(true);
+        } else {
+          localStorage.removeItem("token");
+          setLoggedUser(false);
+        }
       })
-      .catch(() => setLoggedUser(false));
+      .catch(() => {
+        localStorage.removeItem("token");
+        setLoggedUser(false);
+      });
   };
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("action") === "logout") {
+      localStorage.removeItem("token");
+      setLoggedUser(false);
+      const cleanUrl = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+
     checkLogin();
 
     // refresh navbar when window comes back into focus
@@ -35,10 +51,13 @@ function Navbar() {
   const handleLogout = async () => {
     const token = localStorage.getItem("token");
     try {
-      await axios.get(process.env.REACT_APP_API_URL + "/logout", {
-        withCredentials: true,
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
-      });
+      await axios.get(
+        process.env.REACT_APP_API_URL + "/logout" + (token ? `?token=${token}` : ""),
+        {
+          withCredentials: true,
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        }
+      );
     } catch (e) {
       console.log(e);
     }
@@ -46,7 +65,8 @@ function Navbar() {
     localStorage.removeItem("token");
     setLoggedUser(false);
 
-    window.location.assign(window.location.origin + "/");
+    const dashboardUrl = process.env.REACT_APP_DASHBOARD_URL || "https://tradenova-agcz.onrender.com";
+    window.location.assign(`${dashboardUrl.replace(/\/$/, "")}/?action=logout`);
   };
 
   return (
