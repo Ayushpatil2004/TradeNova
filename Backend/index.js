@@ -220,25 +220,81 @@ app.use("/", authRoute);
 app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
   res.json(allHoldings);
-})
+});
 
 app.get("/allPositions", async (req, res) => {
   let allPositions = await PositionsModel.find({});
   res.json(allPositions);
-})
+});
 
-app.post("/newOrder", async (req,res)=>{
-  let newOrder = new OrdersModel({
-    name: req.body.name,
-    quantity: req.body.quantity,
-    price: req.body.price,
-    mode: req.body.mode,
-  })
+app.get("/allOrders", async (req, res) => {
+  try {
+    let allOrders = await OrdersModel.find({}).sort({ createdAt: -1 });
+    res.json(allOrders);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
-  newOrder.save()
-  
-  res.send("Order placed successfully!!");
-})
+app.post("/newOrder", async (req, res) => {
+  try {
+    const { name, qty, quantity, price, mode } = req.body;
+    const finalQty = Number(qty || quantity || 1);
+    const finalPrice = Number(price || 0);
+    const finalMode = (mode || "BUY").toUpperCase();
+
+    let newOrder = new OrdersModel({
+      name: name,
+      qty: finalQty,
+      quantity: finalQty,
+      price: finalPrice,
+      mode: finalMode,
+      createdAt: new Date(),
+    });
+
+    await newOrder.save();
+
+    // Dynamically update Holdings
+    if (finalMode === "BUY") {
+      let holding = await HoldingsModel.findOne({ name });
+      if (holding) {
+        let totalQty = holding.qty + finalQty;
+        let totalCost = holding.avg * holding.qty + finalPrice * finalQty;
+        holding.qty = totalQty;
+        holding.avg = totalQty > 0 ? totalCost / totalQty : finalPrice;
+        holding.price = finalPrice || holding.price;
+        await holding.save();
+      } else {
+        let newHolding = new HoldingsModel({
+          name: name,
+          qty: finalQty,
+          avg: finalPrice,
+          price: finalPrice,
+          net: "+0.00%",
+          day: "+0.00%",
+          isLoss: false,
+        });
+        await newHolding.save();
+      }
+    } else if (finalMode === "SELL") {
+      let holding = await HoldingsModel.findOne({ name });
+      if (holding) {
+        if (holding.qty <= finalQty) {
+          await HoldingsModel.deleteOne({ name });
+        } else {
+          holding.qty -= finalQty;
+          holding.price = finalPrice || holding.price;
+          await holding.save();
+        }
+      }
+    }
+
+    res.status(201).json({ success: true, message: "Order placed successfully!!" });
+  } catch (error) {
+    console.error("Order placement error:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
 
 mongoose
   .connect(uri, {
