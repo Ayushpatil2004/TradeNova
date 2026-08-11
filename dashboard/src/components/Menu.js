@@ -75,7 +75,7 @@ const Menu = () => {
       console.log(e);
     }
     localStorage.removeItem("token");
-    window.location.href = (process.env.REACT_APP_FRONTEND_URL || "https://tradenova-frontend-mn69.onrender.com").replace(/\/$/, "") + "/login";
+    window.location.href = (process.env.REACT_APP_FRONTEND_URL || "https://tradenova-frontend-mn69.onrender.com").replace(/\/$/, "") + "/";
   };
 
   return (

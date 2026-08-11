@@ -46,8 +46,7 @@ function Navbar() {
     localStorage.removeItem("token");
     setLoggedUser(false);
 
-    const dashboardUrl = process.env.REACT_APP_DASHBOARD_URL || "https://tradenova-agcz.onrender.com";
-    window.location.assign(`${dashboardUrl.replace(/\/$/, "")}/?action=logout`);
+    window.location.assign(window.location.origin + "/");
   };
 
   return (

@@ -13,14 +13,14 @@ const Home = () => {
       const urlParams = new URLSearchParams(window.location.search);
       const frontendUrl =
         process.env.REACT_APP_FRONTEND_URL || "https://tradenova-frontend-mn69.onrender.com";
-      const loginRedirectUrl = `${frontendUrl.replace(/\/$/, "")}/login`;
+      const homeRedirectUrl = `${frontendUrl.replace(/\/$/, "")}/`;
 
       const action = urlParams.get("action");
       if (action === "logout") {
         localStorage.removeItem("token");
         const cleanUrl = window.location.pathname + window.location.hash;
         window.history.replaceState({}, document.title, cleanUrl);
-        window.location.href = loginRedirectUrl;
+        window.location.href = homeRedirectUrl;
         return;
       }
 
@@ -34,7 +34,7 @@ const Home = () => {
       const token = tokenFromUrl || localStorage.getItem("token");
 
       if (!token) {
-        window.location.href = loginRedirectUrl;
+        window.location.href = homeRedirectUrl;
         return;
       }
 
@@ -52,12 +52,12 @@ const Home = () => {
           setIsAuthenticated(true);
         } else {
           localStorage.removeItem("token");
-          window.location.href = loginRedirectUrl;
+          window.location.href = homeRedirectUrl;
         }
       } catch (error) {
         console.error("Auth verification error:", error);
         localStorage.removeItem("token");
-        window.location.href = loginRedirectUrl;
+        window.location.href = homeRedirectUrl;
       } finally {
         setLoading(false);
       }
